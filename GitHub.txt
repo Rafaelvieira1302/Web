@@ -1,0 +1,13 @@
+cd.. //Volta para pasta anterior no CMD
+dir /a //mostra as pasta Ocultas
+
+
+Git status;
+Git init //cria repositorio;
+Git add (nome do arquivo) //Adiciona o Arquivo no Stage uma area intermediario;
+Git commit -m "Nome do commit";
+Git config --global user.email "Rafaelvieira130220004@gmail.com"; -> Salva email como padrão da maquina
+Git config --global user.name "Rafael Vieira"; -> Salva nome padrão da maquina
+Git config list; -> mostra todos os comandos do Git
+Git log; ->Mostra Todos os commit que ja foram feitas
+Git log --oneline --all; -> mostra todos os commit em uma unica linha
