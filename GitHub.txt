@@ -11,3 +11,10 @@ Git config --global user.name "Rafael Vieira"; -> Salva nome padrão da maquina
 Git config list; -> mostra todos os comandos do Git
 Git log; ->Mostra Todos os commit que ja foram feitas
 Git log --oneline --all; -> mostra todos os commit em uma unica linha
+Git log --oneline --all --graph; -> mostra todos os commit em graficos
+Git checkout -b (nome); -> cria uma brend nova
+Git checkout -b 12 (numero do repositorio); -> Volta nos repositorios antigos
+Git checkout master; -> volta para pasta mais recente
+Git checkout -b modificacao HEAD~1; -> volta apenas uma brand pra tras ~2 volta 2 brand pra tras
+Git reset --hard; -> desfaz uma modificação e volta para brand que esta no HEAD
+Git push origin master; -> envia os dados para github remoto
