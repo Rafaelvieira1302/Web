@@ -18,3 +18,9 @@ Git checkout master; -> volta para pasta mais recente
 Git checkout -b modificacao HEAD~1; -> volta apenas uma brand pra tras ~2 volta 2 brand pra tras
 Git reset --hard; -> desfaz uma modificação e volta para brand que esta no HEAD
 Git push origin master; -> envia os dados para github remoto
+
+Para fazer clone de outra pessoa;
+Git remote; -> mostra o remoto atual
+Git remote -v; 
+
+code ./; -> Abre o o vscode na pasta atual
