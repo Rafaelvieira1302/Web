@@ -1,0 +1,60 @@
+alt + z; quebra as linhas
+
+<mark></mark> -> Deixa o texto em amarelo
+<p></p> -> coloca um Paragrafo
+<h1 ate 6></h1 ate 6> -> Cria titulo
+<br>; -> Quebra linha
+
+<sub></sub> -> Coloca numero em baixo de outro numero
+<sup></sup> -> Coloca numero em cima de outro numero
+
+<ul> <li></li>-> Coloca os itens na listas </ul>; -> listas não ordena
+
+<ol>
+    <li>Panqueca</li>
+    <li>Pera</li>
+    <li>Uva</li>
+    <li>Maça</li> -> Coloca os itens na lista
+</ol> -> lista ordena
+
+<ol start="5" type="1"> start vai mostrar aparti do item 5 nesse caso;
+    <li>Panqueca</li> type vai dizer se fai ser letra ou numeros
+    <li>Pera</li>
+    <li>Uva</li>
+    <li>Maça</li>
+</ol> -> lista ordena
+
+<dl>
+    <dt>Café</dt>
+    <dd>Bebida fundamental a vida!</dt>
+    <dt>Agua</dt>
+    <dd>Segunda bebida fundamenta a vida!</dt>
+</dl>
+
+<strong></strong> -> Deixa o texto em negrito
+
+<mark></mark> -> Deixa o texto em amarelo
+
+<img src="Link da imagem"> -> Acrescenta imagens
+
+<link target="_blank" href="https://www.google.com"> -> target="_blank" utilizado para abrir uma nova pasta
+        <a target=_blank  href="https://www.google.com">google</a> -> Exemplo do google
+
+<table>
+    <tr> -> linha
+        <th>Nome</th> -> coluna
+        <th>Idade</th> -> primeira linha do cabeçalho
+        <th>Profissão</th>
+    </tr>
+    <tr>
+        <td>Rafael</td> -> Segunda linha
+        <td>21</td>
+        <td>Estudante</td>
+    </tr>
+</table>
+
+<form action="https://www.google.com/search"> -> url de onde quer que pesquisa
+    <label for="q">Query de busca</label>
+    <input id="q" name="q" type="text">
+    <input type="submit" value="Buscar">
+</form>

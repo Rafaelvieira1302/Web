@@ -4,8 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aula Dia 02/10</title>
+    <style>
+        img{
+            width: 500px;
+            border-radius: 50%;
+        }
+        p{
+            color: blue;
+        }
+        h1{
+            color: hotpink;
+        }
+        ul{
+            background-color: lightseagreen; padding: 20px;
+        }
+        table, td{
+            border: 1px solid black;
+            padding: 10px;
+            border-collapse: collapse;
+        }
+    </style>
 </head>
-<body>
-    
+<body>  
+        <h1>Listas</h1>
+        <p>O Html possui lista não ordenadas e lista ordenadas, as lista ordenadas não ordenadas são definidas com a tag &lt;ul&gt; enquanto usamos &lt;ol&gt; para lista ordenadas. </p>
+
+        <ul>
+            <li>Panqueca</li>
+            <li>Pera</li>
+            <li>Uva</li>
+            <li>Maça</li>
+        </ul>
+
+        <ol>
+            <li>Panqueca</li>
+            <li>Pera</li>
+            <li>Uva</li>
+            <li>Maça</li>
+        </ol>
+
+        <ol start="5" type="1">
+            <li>Panqueca</li>
+            <li>Pera</li>
+            <li>Uva</li>
+            <li>Maça</li>
+        </ol>
+
+        <dl>
+            <dt>Café</dt>
+            <dd>Bebida fundamental a vida!</dd>
+            <dt>Agua</dt>
+            <dd>Segunda bebida fundamenta a vida!</dd>
+        </dl>
+        
+        <h1>Tags de formatação de texto</h1>
+
+        <p>Lorem <strong>ipsum dolor</strong>,10<sub>2</sub> = 10<sup>2</sup>sit amet consectetur, adipisicing elit. Iste, enim vero <mark>asperiores veritatis illum amet</mark> ea maiores possimus adipisci ut esse, impedit nisi voluptates tempore laudantium quis quidem, error ab?</p>
+
+        <h1>Links e imagens</h1>
+        <link target="_blank" href="https://www.google.com">
+        <a target=_blank  href="https://www.google.com">google</a>
+        <br>
+
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQzVrG8FVz-y_vADwHwS0HQ5FPJneP95xJHKAqGT828CeP8KMBqxS8mcQw9WFdG5Mk-UOrd9PgUZtQDSYKwSSUFkdWQM66BhZOrDtf1cuu1">
+
+        <h1>Tabelas no Html</h1>
+        <table>
+            <tr><!-- -> linha-->
+                <td>Nome</td> <!-- -> coluna-->
+                <td>Idade</td>
+                <td>Profissão</td>
+            </tr>
+            <tr>
+                <td>Rafael</td>
+                <td>21</td>
+                <td>Estudante</td>
+            </tr>
+        </table>
+        
+        <h1>Tabelas no Html</h1>
+        <table>
+            <tr><!-- -> linha-->
+                <th>Nome</th> <!-- -> coluna-->
+                <th>Idade</th>
+                <th>Profissão</th>
+            </tr>
+            <tr>
+                <td>Rafael</td>
+                <td>21</td>
+                <td>Estudanx te</td>
+            </tr>
+        </table>
+
+        <h1>Formulario</h1>
+
+        <form action="https://www.google.com/search">
+            <label for="q">Query de busca</label>
+            <input id="q" name="q" type="text">
+            <input type="submit" value="Buscar">
+        </form>
 </body>
 </html>
