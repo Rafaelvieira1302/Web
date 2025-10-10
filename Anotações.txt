@@ -61,3 +61,12 @@ alt + z; quebra as linhas
 </form>
 
 placeholder; -> é utilizado para escrever detro do bloco de pesquisa
+
+Alto complit{
+    Exemplo: table>tr>td*3
+    Exemplo: table>(tr>td{Bla}*3)
+}
+
+ifram; -> Abre uma um site dentro de uma aba
+rowspan; -> é utilizado para juntar linhas
+colspan; -> utilizado para juntar colunas
