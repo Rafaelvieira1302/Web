@@ -70,3 +70,5 @@ Alto complit{
 ifram; -> Abre uma um site dentro de uma aba
 rowspan; -> é utilizado para juntar linhas
 colspan; -> utilizado para juntar colunas
+
+para digitar mais de uma dev 

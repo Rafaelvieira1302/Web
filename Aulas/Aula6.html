@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Aula dia 23/10</title>
+    <style>
+        .conteiner{
+            display: flex;
+            flex-direction : row; /* Flex-direction: row; -> Alinha os elementos na horizontal
+            Flex-direction: column; -> Alinha os elementos na vertical */
+            justify-content: space-evenly; /* Justify-content: space-between; -> espaço em volta
+            justify-content: space-evenly; Deixa todos os espaços igual.*/
+            align-content: center; /* Alinha o conteúdo no centro */
+            align-items: center; /* Alinha os itens no centro */
+            flex-wrap: wrap; /* Flex-wrap: wrap; -> Quebra a linha quando não tiver mais espaço 
+            Flex-wrap: no-warp*/
+            border: 1px solid red;
+            height: 100vh;
+        }
+        /*.box2{
+            flex-shrink: 2; /* Flex-shrink: 0; -> Não deixa o elemento encolher */
+            /*flex-grow: 1; Flex-grow: 0; -> Não deixa o elemento crescer */
+        .box{
+            flex-shrink: 0;
+        }
+        .box{
+            border: 1px solid black;
+            display: block;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="conteiner">
+        <div id="box1" class="box">1</div>
+        <div id="box2" class="box">2</div>
+        <div id="box3" class="box">3</div>
+        <div id="box4" class="box">4</div>
+        <div id="box5" class="box">5</div>
+    </div>
+    
+</body>
+</html>

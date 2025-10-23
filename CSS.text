@@ -1,0 +1,17 @@
+Exemplo de como deixar uma box centralizada na tela: 
+#Box{
+    positon:fixed;
+    background-color: cor;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+display: iline; se comporta como texto
+
+Explicar{
+    100vw
+    100dvh
+    100lvw
+    100svh
+}
