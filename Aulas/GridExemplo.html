@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .conteiner{
+            display: grid;
+            height: 100vh;
+            width: 100vw;
+            
+        }
+        @media screen and (max-width: 600px) {/*@media para telas até 400px*/
+            .conteiner{
+                grid-template-areas: 
+                "head"
+                "main"
+                "sidebar"
+                "footer"
+                ;
+            }
+        }
+        @media screen and (min-width: 601px) and (max-width: 2000px) {/*@media para telas entre 401px e 800px*/
+            .conteiner{
+                grid-template-areas: 
+                "head head"
+                "main sidebar"
+                "footer footer"
+                ;
+            }
+            
+        }
+        /*.conteiner{
+            display: grid;
+            height: 100vh;
+            width: 100vw;
+            grid-template-areas: 
+            "head head head head"
+            "main main . sidebar"
+            "footer footer footer footer"
+            ;
+        }*/
+        .head{
+            grid-area: head;
+            background-color: #f77002;
+        }
+        .main{
+            grid-area: main;
+            background-color: #028df7;
+        }
+        .sidebar{
+            grid-area: sidebar;
+            background-color: #f73302;
+        }
+        .footer{
+            grid-area: footer;
+            background-color: #33f702;
+        }
+    </style>
+</head>
+<body>
+    <div class="conteiner">
+        <div class="box head">cabeçario</div>
+        <div class="box main">mein</div>
+        <div class="box sidebar">side bar</div>
+        <div class="box footer">footer</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula dia 30/10</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            height: 100vh;
+            animation: rotacao 4s linear infinite;
+        }
+        .box{
+            border-radius: 50%;
+            border: 20px solid red;
+            background-color: #aaaaaa;
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            animation: rotacao 4s linear infinite;/* aplica a animação de rotação */
+        }
+        @keyframes rotacao{ /* animação de rotação */
+            from{
+                transform: rotate(0deg);/* ponto inicial da animação */
+            }
+            to{
+                transform: rotate(360deg);/* ponto final da animação */
+            }
+        }
+        .box{
+            border-top-color: blue;
+            border-right-color: green;
+            border-left-color: yellow;
+            border-bottom-color: red;
+        }
+    </style>
+</head>
+<body>
+    <!--div.box#item${$}*6--><!-- cria 5 divs com a classe box e id item1, item2, item3... -->
+    <div class="box" id="item1">1</div>
+    <div class="box" id="item2">2</div>
+    <div class="box" id="item3">3</div>
+    <div class="box" id="item4">4</div>
+    
+</body>
+</html>

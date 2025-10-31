@@ -1,5 +1,7 @@
 alt + z; quebra as linhas
 
+grid garden -> treinar grid
+
 <mark></mark> -> Deixa o texto em amarelo
 <p></p> -> coloca um Paragrafo
 <h1 ate 6></h1 ate 6> -> Cria titulo

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layot</title>
+    <Style>
+        .conteiner{
+            display: grid;
+            /*grid-template-columns: 100px 1fr; /*1fr = 1 fração do espaço disponível*/
+            /*grid-template-rows: 100px 80vh 20vh;/*grid-template-rows: altura das linhas*/
+            /*grid-template-areas: /*definição das áreas do grid*/
+            /*"box1 box3 box2"
+            "box1 box3 box2"
+            "box6 box6 box6"
+            "box4 box5 box5"
+            ;/*grid-gap: 10px; /*espaçamento entre os elementos do grid*/
+
+
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+        }
+
+        .box6{
+            grid-row-start: 2;/*inicia na linha 2*/
+            grid-row-end: 3;/*termina na linha 3*/
+            grid-column-start: 2;/*inicia na coluna 2*/
+            grid-column-end: 4;/*termina na coluna 4*/
+        }
+        .box2{
+            grid-row: 2 / span 3;/*começa na linha 2 e ocupa 3 linhas*/
+            grid-column: 1 / span 1;
+        }
+        .box3{
+            grid-area: 4 / 5 / 6 / 6;/*grid-area: linha inicial / coluna inicial / linha final / coluna final*/
+        }
+
+        /*.box1{
+            grid-area: box1;
+        }
+        .box2{
+            grid-area: box2;
+        }
+        .box3{
+            grid-area: box3;
+        }
+        .box4{
+            grid-area: box4;
+        }
+        .box5{
+            grid-area: box5;
+        }
+        .box6{
+            grid-area: box6;
+        }*/
+        .box {
+            background-color: red;
+            color: white;
+            border: 2px solid black;
+            font-size: 30px;
+            text-align: center;
+        }/*outra forma de definir o tamanho dos elementos do grid*/
+    </Style>
+</head>
+<body>
+    <h1>Grid faz parte do CSS versão 2.0</h1>
+    <h2>O Grid é uma propriedade display que permite criar Layot complexos de forma simples e eficiente</h2>
+    
+    <div class="conteiner">
+        <div class="box box1">1</div>
+        <div class="box box2">2</div>
+        <div class="box box3">3</div>
+        <div class="box box4">4</div>
+        <div class="box box5">5</div>
+        <div class="box box6">6</div>
+    </div>
+</body>
+</html>

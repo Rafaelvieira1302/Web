@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula dia 30/10</title>
+    <style>
+        /* Display: Flex; so funciona quando for utilizado no conteiner.
+            não tem como usar no item */
+        /* justify-content: alinha os itens no eixo principal (horizontal) */
+        /* align-items: alinha os itens no eixo secundário (vertical) */
+        /* height: 100vh; 100% da altura da tela */
+        
+        body{
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            height: 50vh;
+            font-size: 4rem;
+            animation: rotacao 5s linear infinite;
+        }
+        #foguete{
+            font-size: 100px;
+            animation: subir 5s ease-in-out infinite;
+        }
+        @keyframes subir{
+            0%{
+                transform: translateY(100VH);
+            }
+            to{
+                transform: translateY(0vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!--div.box#item${$}*6--><!-- cria 5 divs com a classe box e id item1, item2, item3... -->
+    <div class="box" id="foguete">🚀</div>
+    
+</body>
+</html>

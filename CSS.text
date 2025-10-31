@@ -1,3 +1,19 @@
+div.box#item${$}*6 <!-- cria 5 divs com a classe box e id item1, item2, item3... -->
+
+Display: Flex; so funciona quando for utilizado no conteiner. não tem como usar no item
+
+justify-content: alinha os itens no eixo principal (horizontal)
+
+align-items: alinha os itens no eixo secundário (vertical)
+
+height: 100vh; 100% da altura da tela
+
+nth-child: seleciona o elemento filho de acordo com a posição
+
+.box:nth-child(2n) -> Utilizado para selecinar um sim e outro não
+
+flex-grow: 2;-> cresce o item de acordo com o valor
+
 Exemplo de como deixar uma box centralizada na tela: 
 #Box{
     positon:fixed;
@@ -14,4 +30,8 @@ Explicar{
     100dvh
     100lvw
     100svh
+}
+
+.conteiner{
+    flex-direction: row | 
 }
