@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 4</title>
+    <style>
+      /*regra 1*/ li{color:red;} /*aplica a todos os itens da lista*/
+      /*regra 2*/ .churras{color:green;}/*aplica a todos os itens com a classe churras*/
+      /*regra 3*/ .fruta{color:gray}/*aplica a todos os itens com a classe fruta*/
+      /*regra 4*/ li+li.churras{color: black;}/*aplica ao item churras que vem imediatamente após outro item*/
+      /*regra 5*/ .churras[draggable="true"]{color: magenta;} /*aplica ao item com a classe churras que tem o atributo draggable igual a verdadeiro*/
+      /*regra 6*/ #lip1,#lip2,#lip3{color:blue}/*aplica aos itens com os ids lip1, lip2 e lip3*/
+      /*regra 7*/ #lip3.fruta{color:orange}/*aplica ao item com o id lip3 e a classe fruta*/
+      /*regra 8*/ ol>li.churras#lip5{color:purple}/*aplica ao item com a classe churras e o id lip5 que é filho direto da lista ordenada*/
+   </style>
+</head>
+<body>
+    <ol>
+   <!--item 1--> <li id="lip0">Abacaxi</li>
+   <!--item 2--> <li           class="fruta">Melão</li>
+   <!--item 3--> <li id="lip2" class="fruta">Pera</li>
+   <!--item 4--> <li id="lip3" class="fruta">Uva</li>
+   <!--item 5--> <li id="lip4" class="fruta">Maçã</li>
+   <!--item 6--> <li           class="churras">Carne</li>
+   <!--item 7--> <li           class="churras">Linguiça</li>
+   <!--item 8--> <li id="lip7" class="churras" draggable="true">Pão de alho</li>
+   </ol>
+   
+</body>
+</html>
