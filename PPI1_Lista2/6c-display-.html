@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade C</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .conteiner{
+            display: grid;
+            width: 100vw;
+            height: 100vh;
+            grid-template-areas: 
+            "box3 . box4"
+            ". box5 . "
+            "box1 . box2";
+            
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            grid-area: box1;
+            justify-self: start;
+            align-self: end;
+        }
+        .box2{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            grid-area: box2;
+            justify-self: end;
+            align-self: end;
+        }
+        .box3{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            grid-area: box3;
+            justify-self: start;
+            align-self: start;
+        }
+        .box4{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            grid-area: box4;
+            justify-self: end;
+            align-self: flex-start;
+        }
+        .box5{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            grid-area: box5;
+            justify-self: center;
+            align-self: center;
+        }
+        #item1{
+            background-color: royalblue;
+        }
+        #item2{
+            background-color: green;
+        }
+        #item3{
+            background-color: red;
+        }
+        #item4{
+            background-color: yellow;
+        }
+        #item5{
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="conteiner">
+        <div class="box1" id="item1">Box</div>
+        <div class="box2" id="item2">Box</div>
+        <div class="box3" id="item3">Box</div>
+        <div class="box4" id="item4">Box</div>
+        <div class="box5" id="item5">Box</div>
+    </div>
+</body>
+</html>

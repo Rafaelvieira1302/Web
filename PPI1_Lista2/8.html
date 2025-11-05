@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barco navegando</title>
+    <style>
+        body{
+            border: 0;
+            margin: 0;
+            background-color: aquamarine;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            height: 100vh;
+            font-size: 4rem;
+            animation: navegando 5s ease-in-out infinite;
+        }
+        #Barco{
+            font-size: 200px;
+            animation: navegar 5s ease-in-out infinite;
+        }
+        .mar{
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            background-color: blue;
+        }
+        @keyframes navegar{
+            0%{
+                transform: translateX(100VH);
+            }
+            to{
+                transform: translateX(-100vh);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box" id="Barco">🛥️</div>
+    <div class="mar" id="mar1"></div>
+</body>
+</html>

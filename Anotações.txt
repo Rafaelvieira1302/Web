@@ -7,6 +7,7 @@ grid garden -> treinar grid
 <h1 ate 6></h1 ate 6> -> Cria titulo
 <br>; -> Quebra linha
 <em></em>; -> Marca texto 
+<hr><!-- linha horizontal -->
 
 <sub></sub> -> Coloca numero em baixo de outro numero
 <sup></sup> -> Coloca numero em cima de outro numero
