@@ -1,0 +1,7 @@
+Busca elementos
+
+document.getElementByIdAll("button"); -> Mostra todos os Botao
+document.getElementById("botao1"); -> Mostra o botao1
+document.body.childNodes; -> Mostra pela arvore do body
+
+Botao.style.backgroundColor("pink"); -> Altera a cor do botão pelo console Java Script

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Random</button>
+
+    <div></div>
+    <script>
+        b=document.querySelector("button");
+        div=document.querySelector("div");
+        b.addEventListener("click",()=>{
+            let rand=Math.random();
+            /*let min=Number.parset(prompt("Digite o valor mínimo:"));
+            let max=Number.parset(prompt("Digite o valor máximo:"));*/
+            let min = 30;
+            let max = 50;
+            random=(rand*(max-min))+min;
+            console.log(random);
+            div.innerHtml=random;
+        });
+    </script>
+</body>
+</html>

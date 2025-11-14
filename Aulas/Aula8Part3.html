@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*let body=document.body;
+        body.innerHTML='<button> Click aqui </button>'; uma das forma de fazer*/
+
+        b=document.createElement("button");
+        b.innerHTML="Clique em min";
+        document.body.appendChild(b);
+        let i = 0;
+
+        b.addEventListener("click", ()=>{
+            p=document.createElement("p");
+            document.body.appendChild(p);
+            p.innerHTML=i;
+            i++;
+        });
+    </script>
+</body>
+</html>
