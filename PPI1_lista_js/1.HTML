@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O que é JavaScript?</title>
+    <script>
+        alert("Pagina sobre JavaScript");
+
+        console.log("Pagina carregada");
+
+        function hora() {
+            const agora = new Date();
+            document.getElementById("horaAtual").innerHTML =
+                "Hora: " + agora.toLocaleTimeString();
+        }
+        window.onload = hora;
+    </script>
+</head>
+<body>
+    <h1 id="Titulo">O que é JavaScript?</h1>
+
+    <h2 id="subtilo 1">A motivação para a criação do JavaScript?</h2>
+    <p id="paragrafo 1">
+        Javascript surgiu em 1995 e foi criada por <mark id="criador">Brendan Eich</mark>, a pedido da empresa <mark id="empresa">Netscape</mark> (um dos primeiros navegadores) com o objetivo de validar formulários HTML. Como os browsers ainda eram estéticos, essa linguagem foi revolucionária para a época.
+        <br>
+        Em 1996, a Microsoft criou uma linguagem idêntica para ser usada no Internet Explorer. A Netscape então regularizou a linguagem através da organização internacional ECMA, companhia especializada em padrões e regras. Com o tempo, a linguagem foi sendo modificada e hoje em dia é “Client-side”, ou seja o que ocorre no dispositivo do usuário final, o cliente. Isso inclui o que o usuário vê, como texto, imagens e o restante da interface, além de todas as ações que um aplicativo executa no navegador do usuário.
+    </p>
+    <h2 id="subtilo 2">A diferença entre execução no navegador e no servidor.</h2>
+    <p id="paragrafo 2">
+        Servidores Web e servidores de aplicações são as tecnologias que permitem a troca de dados e serviços pela Internet. 
+        A arquitetura cliente-servidor é o mecanismo subjacente da Internet. Quando você visita um site ou aplicação, seu navegador (como cliente) solicita dados de um servidor remoto e exibe a resposta. Um servidor Web é um componente de software que fornece dados estáticos, como imagens, arquivos e texto, em resposta às solicitações do cliente. Um servidor de aplicações adiciona lógica de negócios para calcular a resposta do servidor Web. Os dois termos são usados como sinônimos, e as soluções de software de servidor mais populares atualmente são servidores híbridos de aplicações Web.
+    </p>
+    <h2 id="subtilo 3">O conceito de sandbox no navegador.</h2>
+    <p id="paragrafo 3">
+        Uma sandbox é um ambiente seguro e isolado usado para executar, testar ou analisar código, aplicativos ou programas sem afetar o sistema ou o ambiente circundante.
+        <br>
+        É comumente utilizado no desenvolvimento de software, na segurança cibernética e em testes para prevenir riscos, como a execução de código malicioso ou alterações não intencionais no sistema.
+        <br>
+        O isolamento de páginas da web (sandboxing) é uma técnica de segurança que isola páginas da web e operações do navegador do restante do dispositivo ou sistema. Isso garante que, mesmo que uma página da web contenha código malicioso, ela não possa acessar os arquivos do sistema nem se propagar pela rede.
+    </p>
+
+    <p id="horaAtual" style="font-weight: bold; margin-top: 20px;"></p>
+
+</body>
+</html>

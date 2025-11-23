@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade 2</title>
+    <script>
+        function executar() {
+            let texto = "Ola mundão";
+            let numero = 10;
+            let bool = true;
+            let indefinido = undefined;
+            let nulo = null;
+            let objeto = { nome: "Rafael", idade: 21 };
+            let array = [1, 2, 3];
+
+            document.getElementById("pstring").innerText = "Tipo de texto: " + typeof texto;
+            document.getElementById("pnumero").innerText = "Tipo de número: " + typeof numero;
+            document.getElementById("pboolean").innerText = "Tipo de boolean: " + typeof bool;
+            document.getElementById("pundefined").innerText = "Tipo de undefined: " + typeof indefinido;
+            document.getElementById("pnull").innerText = "Tipo de null: " + typeof nulo;
+            document.getElementById("pobject").innerText = "Tipo de objeto: " + typeof objeto;
+            document.getElementById("parray").innerText = "Tipo de array: " + typeof array;
+
+            let op1 = texto + numero;
+            let op2 = bool * numero;
+            let op3 = texto * numero;
+            let op4 = numero + null;
+            let op5 = numero + undefined;
+
+            console.log("String + Numero =", op1);
+            console.log("Boolean * Numero =", op2);
+            console.log("String * Numero =", op3);
+            console.log("Numero + null =", op4);
+            console.log("Numero + indefinido =", op5);
+
+            document.getElementById("op1").innerText =
+                `String + Numero = ${op1}`;
+
+            document.getElementById("op2").innerText =
+                `Boolean * Numero = ${op2}`;
+
+            document.getElementById("op3").innerText =
+                `String * Numero = ${op3}`;
+
+            document.getElementById("op4").innerText =
+                `Numero + null = ${op4}`;
+
+            document.getElementById("op5").innerText =
+                `Numero + indefinido = ${op5}`;
+        }
+    </script>
+</head>
+<body>
+    <h1>Exemplo de Tipos e Operações em JavaScript</h1>
+
+    <button onclick="executar()">Executar Script</button>
+   
+    <h2>Tipos das Variáveis</h2>
+    <p id="pstring"></p>
+    <p id="pnumero"></p>
+    <p id="pboolean"></p>
+    <p id="pundefined"></p>
+    <p id="pnull"></p>
+    <p id="pobject"></p>
+    <p id="parray"></p>
+
+    <h2>Operações entre Tipos Diferentes</h2>
+    <p id="op1"></p>
+    <p id="op2"></p>
+    <p id="op3"></p>
+    <p id="op4"></p>
+    <p id="op5"></p>
+</body>
+</html>
