@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio de Numeros</title>
+</head>
+<body>
+
+    <h1>Sorteio de Numeros</h1>
+
+    <label>Minimo</label>
+    <input type="number" id="min"><br><br>
+
+    <label>Maximo</label>
+    <input type="number" id="max"><br><br>
+
+    <button onclick="sortear()">Sortear</button>
+
+    <p id="resultado"></p>
+
+    <h2>Lista de Numeros Sorteados</h2>
+    <div id="lista"></div>
+
+    <script>
+        let numeros = [];
+
+        function sortear() {
+
+            let minimo = Number(document.getElementById("min").value);
+            let maximo = Number(document.getElementById("max").value);
+
+            if (!minimo) minimo = 1;
+            if (!maximo) maximo = 100;
+
+            let sorteado = Math.floor(Math.random() * (maximo - minimo + 1)) + minimo;
+
+            document.getElementById("resultado").innerText = "Número sorteado: " + sorteado;
+
+            let existente = numeros.find(obj => obj.valor === sorteado);
+
+            if (existente) {
+                existente.quantidade++;
+            } else {
+                numeros.push({ valor: sorteado, quantidade: 1 });
+            }
+            atualizarLista();
+        }
+
+        function atualizarLista() {
+            let divLista = document.getElementById("lista");
+            divLista.innerHTML = "";
+            
+            numeros.forEach(item => {
+                let p = document.createElement("p");
+                p.textContent = item.valor + " — Sorteado " + item.quantidade + " vez(es)";
+                divLista.appendChild(p);
+            });
+        }
+
+    </script>
+
+</body>
+</html>
