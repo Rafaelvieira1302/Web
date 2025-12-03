@@ -1,13 +1,246 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Calculadora</title>
-    <link rel="stylesheet" href="Calculadora.Css">
+
+    <style>
+        body{ 
+            font-family: Arial, sans-serif; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center;
+            height:100vh; margin:0; 
+            background:white; 
+        }
+        .calculadora{ 
+            background:white; 
+            padding:12px; 
+            border-radius:10px; 
+            border: 2px solid black;
+            width:360px; 
+        }
+        #tela{ 
+            background:black; 
+            color:white; 
+            border-radius:8px; 
+            padding:8px; 
+            margin-bottom:10px; 
+        }
+        #expressao{ 
+            width:100%; 
+            border:0; 
+            background:transparent; 
+            color:inherit; 
+            font-size:20px; 
+            outline:none; 
+        }
+        .botao{ 
+            display:grid; 
+            grid-template-columns: repeat(4,1fr); 
+            gap:8px; 
+        }
+        button{ 
+            padding:12px; 
+            border-radius:8px; 
+            border:0; 
+            cursor:pointer; 
+            font-size:16px; 
+        }
+        button.equal{ 
+            grid-column:span 1; 
+        }
+        #error{ 
+            min-height:18px; 
+            margin-top:8px; 
+            font-size:13px; 
+        }
+    </style>
 </head>
 <body>
-    
-    <script></script>
+
+    <div class="calculadora">
+        <div id="tela">
+            <input id="expressao" aria-label="expressao mat" placeholder="0" autocomplete="off">
+        </div>
+
+        <div class="botao">
+            <button class="small" data-key="(">(</button>
+            <button class="small" data-key=")">)</button>
+            <button class="limpa" id="limpa">C</button>
+            <button id="apaga">⌫</button>
+
+            <button class="small" data-key="7">7</button>
+            <button class="small" data-key="8">8</button>
+            <button class="small" data-key="9">9</button>
+            <button class="op" data-key="/">/</button>
+
+            <button class="small" data-key="4">4</button>
+            <button class="small" data-key="5">5</button>
+            <button class="small" data-key="6">6</button>
+            <button class="op" data-key="*">*</button>
+
+            <button class="small" data-key="1">1</button>
+            <button class="small" data-key="2">2</button>
+            <button class="small" data-key="3">3</button>
+            <button class="op" data-key="-">-</button>
+
+            <button class="op" data-key="+">+</button>
+            <button class="small" data-key="0">0</button>
+            <button class="small" data-key=".">.</button>
+            <button class="equal" id="igual">=</button>
+        </div>
+        <div id="error" role="status" aria-live="polite"></div>
+    </div>
+
+    <script>
+        const expreInput = document.getElementById('expressao');
+        const keys = document.querySelectorAll('[data-key]');
+        const equals = document.getElementById('igual');
+        const clearBtn = document.getElementById('limpa');
+        const back = document.getElementById('apaga');
+        const errorDiv = document.getElementById('error');
+
+        const MAX_LENGTH = 120;
+
+        function insertAtCursor(text) {
+            const start = expreInput.selectionStart;
+            const end = expreInput.selectionEnd;
+            const before = expreInput.value.slice(0, start);
+            const after = expreInput.value.slice(end);
+            expreInput.value = before + text + after;
+            const pos = start + text.length;
+            expreInput.setSelectionRange(pos, pos);
+            expreInput.focus();
+            showError('');
+        }
+
+        keys.forEach(k => k.addEventListener('click', () => insertAtCursor(k.dataset.key)));
+
+        clearBtn.addEventListener('click', () => {
+            expreInput.value = '';
+            showError('');
+        });
+
+        back.addEventListener('click', () => {
+            expreInput.value = expreInput.value.slice(0, -1);
+            showError('');
+        });
+
+
+        equals.addEventListener('click', compute);
+
+        function showError(msg) {
+            errorDiv.textContent = msg || '';
+        }
+
+        function isBalancedParens(s) {
+            let d = 0;
+            for (const ch of s) {
+                if (ch === '(') d++;
+                else if (ch === ')') { d--; if (d < 0) return false; }
+            }
+            return d === 0;
+        }
+
+        function isSafeExpression(input) {
+            if (!input) { 
+                showError('Expressão vazia.'); 
+                return false; 
+            }
+            if (input.length > MAX_LENGTH) { 
+                showError('Expressão muito longa.'); 
+                return false; 
+            }
+
+            if (/[^0-9+\-*/().\s]/.test(input)) { 
+                showError('Caracteres inválidos detectados.'); 
+                return false; 
+            }
+
+            const compact = input.replace(/\s+/g, '');
+
+            if (/([+\-*/]{2,})/.test(compact)) { 
+                showError('Sequência inválida de operadores.'); 
+                return false; 
+            }
+
+            if (/^[*/]/.test(compact)) { 
+                showError('Expressão inválida (começa com operador).'); 
+                return false; 
+            }
+
+            if (/[+\-*/.]$/.test(compact)) {
+                showError('Expressão inválida (termina com operador).'); 
+                return false; 
+            }
+
+            if (!isBalancedParens(compact)) { 
+                showError('Parênteses não balanceados.'); 
+                return false; 
+            }
+
+            const nums = compact.split(/[^0-9.]+/).filter(Boolean);
+            for (const n of nums) {
+                if (n.length > 40) { 
+                    showError('Número muito grande na expressão.'); 
+                    return false; 
+                }
+            }
+            return true;
+        }
+
+        function compute() {
+            showError('');
+            let expr = expreInput.value.trim();
+            if (!expr) { 
+                showError('Nada para calcular.'); 
+                return; 
+            }
+            expr = expr.replace(/,/g, '.');
+
+            if (!isSafeExpression(expr)) return;
+
+            try {
+                const result = eval(expr);
+
+                if (result === Infinity || result === -Infinity) { 
+                    showError('Divisão por zero.'); 
+                    return; 
+                }
+                if (Number.isNaN(result)) { 
+                    showError('Resultado indefinido.'); 
+                    return; 
+                }
+                expreInput.value = String(result);
+            } catch (e) {
+                console.error(e);
+                showError('Erro ao avaliar expressão.');
+            }
+        }
+
+        expreInput.addEventListener('keydown', (ev) => {
+            const allowed = ['0','1','2','3','4','5','6','7','8','9','+','-','*','/','(',')','.','Backspace','Enter','Tab','ArrowLeft','ArrowRight','Delete','Escape','Home','End'];
+            if (ev.key === 'Enter') { 
+                ev.preventDefault(); compute(); return; 
+            }
+            if (ev.ctrlKey || ev.metaKey) { 
+                return;
+            }
+            if (!allowed.includes(ev.key)) {
+                ev.preventDefault();
+            }
+        });
+
+        document.addEventListener('keydown', (ev) => {
+            if (ev.key === '=') { 
+                ev.preventDefault(); compute(); 
+            }
+        });
+
+        expreInput.focus();
+
+    </script>
 </body>
 </html>

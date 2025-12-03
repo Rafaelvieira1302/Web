@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bloco de Notas</title>
+
+    <style>
+        body{ 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+        }
+        #lista{ 
+            width: 200px; 
+            float: left; 
+            margin-right: 20px; 
+        }
+        #lista button{ 
+            width: 100%; 
+            margin-bottom: 6px; 
+        }
+        #notas{ 
+            border: 1px solid #ccc; 
+            padding: 6px; 
+            min-height: 200px; 
+        }
+        .item{ 
+            padding:6px; 
+            cursor:pointer; 
+        }
+        input, textarea{
+            width: 100%;
+             box-sizing: border-box; 
+             margin-bottom:8px; 
+        }
+        textarea{
+            height: 200px; 
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Bloco de Notas</h2>
+
+    <div id="lista">
+        <button id="btnNovo">Nova</button>
+        <div id="notas"></div>
+    </div>
+
+    <div id="editor">
+        <input id="titulo" placeholder="Título" />
+        <textarea id="conteudo" placeholder="Escreva aqui..."></textarea>
+        <button id="btnSalvar">Salvar</button>
+        <button id="btnExcluir">Excluir</button>
+    </div>
+
+    <script>
+        let notas = [];
+        let notaAbertaId = null;
+
+        function carregar() {
+            const raw = localStorage.getItem('minhas_notas');
+            if (raw) notas = JSON.parse(raw);
+            else notas = [];
+            renderizarLista();
+        }
+
+        function salvarNoDisco() {
+            localStorage.setItem('minhas_notas', JSON.stringify(notas));
+        }
+
+        function renderizarLista() {
+            const cont = document.getElementById('notas');
+            cont.innerHTML = '';
+            for (let n of notas) {
+                const d = document.createElement('div');
+                d.className = 'item';
+                d.textContent = n.titulo || '(Sem título)';
+                d.onclick = function() { abrirNota(n.id); };
+                cont.appendChild(d);
+            }
+        }
+
+        function abrirNota(id) {
+            const n = notas.find(x => x.id === id);
+            if (!n) return;
+            notaAbertaId = id;
+            document.getElementById('titulo').value = n.titulo;
+            document.getElementById('conteudo').value = n.conteudo;
+        }
+
+        function novaNota() {
+            notaAbertaId = null;
+            document.getElementById('titulo').value = '';
+            document.getElementById('conteudo').value = '';
+            document.getElementById('titulo').focus();
+        }
+
+        function salvarNota() {
+            const titulo = document.getElementById('titulo').value.trim();
+            const conteudo = document.getElementById('conteudo').value.trim();
+
+            // evita salvar notas completamente vazias
+            if (!titulo && !conteudo) {
+                alert('A nota está vazia. Digite algo antes de salvar.');
+                return;
+            }
+
+            if (notaAbertaId !== null) {
+                const n = notas.find(x => x.id === notaAbertaId);
+                if (!n) return;
+                n.titulo = titulo;
+                n.conteudo = conteudo;
+            } else {
+                const novo = {
+                    id: Date.now(),
+                    titulo: titulo,
+                    conteudo: conteudo
+                };
+                notas.push(novo);
+                notaAbertaId = novo.id;
+            }
+
+            salvarNoDisco();
+            renderizarLista();
+            alert('Nota salva.');
+        }
+
+        function excluirNota() {
+            if (notaAbertaId === null) {
+                alert('Nenhuma nota para excluir.');
+                return;
+            }
+            if (!confirm('Tem certeza que deseja excluir?')) return;
+
+            notas = notas.filter(x => x.id !== notaAbertaId);
+            notaAbertaId = null;
+            salvarNoDisco();
+            renderizarLista();
+            novaNota();
+            alert('Nota excluída.');
+        }
+
+        document.getElementById('btnNovo').onclick = novaNota;
+        document.getElementById('btnSalvar').onclick = salvarNota;
+        document.getElementById('btnExcluir').onclick = excluirNota;
+
+        carregar();
+
+    </script>
+</body>
+</html>

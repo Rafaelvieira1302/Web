@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Busca de Filmes</title>
+
+    <style>
+        body{ 
+            padding:20px; 
+        }
+        input{ 
+            width:60%; 
+            padding:8px; 
+        }
+        button{ 
+            padding:8px 12px; 
+        }
+        #resultados{ 
+            margin-top:16px; 
+            display:grid; 
+            gap:12px; 
+            grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+        }
+        .card{ 
+            padding:8px; 
+            border:1px solid #ddd; 
+            border-radius:6px; 
+        }
+        .card img{ 
+            width:100%; 
+            height:230px; 
+            object-fit:cover; 
+            border-radius:4px; 
+        }
+        .titulo{ 
+            font-weight:bold; 
+            margin-top:8px;
+        }
+        .info{ 
+            font-size:13px; 
+            color:#333; 
+            margin-top:4px; 
+        }
+  </style>
+</head>
+<body>
+
+    <h2>Busca de Filmes</h2>
+
+    <input id="q" placeholder="Digite nome do filme..." />
+    <button id="btn">Buscar</button>
+
+    <div id="resultados"></div>
+
+    <script>
+
+        const API_BASE = "https://www.omdbapi.com/?apikey=4a3b711b";
+
+        const input = document.getElementById('q');
+        const btn = document.getElementById('btn');
+        const resultados = document.getElementById('resultados');
+
+        btn.onclick = buscarFilmes;
+
+        async function buscarFilmes() {
+            const termo = input.value.trim();
+        
+            if (!termo) {
+                resultados.innerHTML = "<p>Digite algo</p>";
+                return;
+            }
+      
+            resultados.innerHTML = "<p>Buscando</p>";
+      
+            try {
+                const res = await fetch(`${API_BASE}&s=${encodeURIComponent(termo)}`);
+                const data = await res.json();
+
+                if (data.Response === "False") {
+                    resultados.innerHTML = "<p>Nenhum filme encontrado.</p>";
+                    return;
+                }
+
+                resultados.innerHTML = "";
+
+                for (let item of data.Search) {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = "<p>Carregando...</p>";
+                    resultados.appendChild(card);
+
+                    try {
+                        const det = await fetch(`${API_BASE}&i=${item.imdbID}`);
+                        const info = await det.json();
+
+                        const poster = (info.Poster && info.Poster !== "N/A") ? info.Poster : "https://via.placeholder.com/200x300?text=Sem+Imagem";
+
+                        card.innerHTML = `
+                        <img src="${poster}" alt="Poster">
+                        <div class="titulo">${info.Title}</div>
+                        <div class="info">Ano: ${info.Year || '-'}</div>
+                        <div class="info">Gênero: ${info.Genre || '-'}</div>
+                        <div class="info">IMDb: ${info.imdbRating || '-'}</div>
+                        `;
+                    } catch (e) {
+                        card.innerHTML = "<p>Erro ao carregar detalhes.</p>";
+                    }
+                }
+
+            } catch (err) {
+                resultados.innerHTML = "<p>Erro na busca.</p>";
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+</html>
